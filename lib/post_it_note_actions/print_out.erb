@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://bootswatch.com/paper/bootstrap.min.css">
+    <style type="text/css" media="all">
+      .container {
+        padding-bottom: 20px;
+      }
+      .page {
+        overflow: hidden;
+        page-break-after: always; 
+        page-break-inside: avoid;
+      }
+      .post_it_note {
+        padding: 5px 10px;
+        float: left;
+        margin: 20px 20px 0 0;
+        width: 320px;
+        border: 2px dashed grey;
+        font-size: 10px;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      .bonus {
+        border-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-1-sm"></div>
+        <div class="col-10-sm">
+          <% @grouping.to_a.in_groups_of 4, false do |batch| %>
+            <div class="page">
+              <% batch.each do |n, actions| %>
+                <div class="post_it_note" style="<%= compute_post_it_styles actions %>">
+                  <p>Lines of code: <%= total_loc actions %></p>
+
+                  <ul>
+                    <% actions.each do |(action, lines_of_code)| %>
+                      <li><%= action %> (<%= lines_of_code %>)</li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+
+          <% @remaining.each do |(action, lines_of_code)| %>
+            <div class="post_it_note bonus">
+              <p>
+                <strong>Bonus</strong><br>
+                Lines of code: <%= lines_of_code %>
+              </p>
+
+              <p><%= action %></p>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-1-sm"></div>
+      </div>
+    </div>
+  </body>
+</html>
