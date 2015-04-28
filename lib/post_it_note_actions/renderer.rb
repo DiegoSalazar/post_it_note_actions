@@ -26,8 +26,9 @@ class Renderer
   private
 
   # Find the group with the most actions and return an int h where:
-  # h = (max_actions + 2) * 18
-  # the factor represents the line height in the rendered post it action list
+  # h = (max_actions + pad) * factor
+  # the pad represents the top two header lines in the rendered post it
+  # the factor represents the line height of the action list
   def compute_height(pad_lines = 2, factor = 18)
     (max_actions + pad_lines) * factor
   end
