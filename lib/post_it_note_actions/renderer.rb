@@ -29,8 +29,8 @@ class Renderer
   # h = (max_actions + pad) * factor
   # the pad represents the top two header lines in the rendered post it
   # the factor represents the line height of the action list
-  def compute_height(pad_lines = 2, factor = 18)
-    (max_actions + pad_lines) * factor
+  def compute_height(pad = 2, factor = 18)
+    (max_actions + pad) * factor
   end
 
   # Make the groups with the least lines of code green and gradually go to red
