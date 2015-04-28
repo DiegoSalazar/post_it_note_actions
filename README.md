@@ -12,6 +12,8 @@ Then, print out the resulting HTML file, which is written to your project root, 
 
 ![Image of Example Post It Note Board](https://cloud.githubusercontent.com/assets/89930/7376906/1672368e-edb1-11e4-917c-f95139327df3.jpg)
 
+Funny how this project doesn't have tests, as you may have noticed. I'm too busy! After writing this project and running it against our legacy Rails app, we ended up printing out 100 Post Its, each with about 80 lines of code! 
+
 ## Installation
 
 Add this line to your application's Gemfile:
