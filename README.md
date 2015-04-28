@@ -8,7 +8,9 @@ We needed a way to keep the same controllers roughly grouped together so each de
 
 The result is an HTML page with boxes listing the controller name and action and the total lines of code for that Post It Note.
 
-![Image of Post It Note Board](https://cloud.githubusercontent.com/assets/89930/7376906/1672368e-edb1-11e4-917c-f95139327df3.jpg)
+Then, print out the resulting HTML file, which is written to your project root, and cut out the Post Its!. Make a column for each of your dev's names. Each column can have a "Working" and "Done" sub column to allow other devs to see who is working on which actions in case they get a Post It with overlapping controllers.
+
+![Image of Example Post It Note Board](https://cloud.githubusercontent.com/assets/89930/7376906/1672368e-edb1-11e4-917c-f95139327df3.jpg)
 
 ## Installation
 
@@ -35,8 +37,6 @@ rake post_it_note_actions[10,"output file name.html"]
 ```
 
 The first argument is the max number of post it notes to print out. Depending on how many controller actions your project has you should vary that number so that each Post It Note has a decent amount of actions and lines of code.
-
-Then, print out the resulting file, which is written to your project root, and cut out the Post Its!. Make a column for each of your dev's names. Each column can have a "Working" and "Done" sub column to allow other devs to see who is working on which actions in case they get a Post It with overlapping controllers.
 
 ## Development
 
