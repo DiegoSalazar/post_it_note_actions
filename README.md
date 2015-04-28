@@ -8,7 +8,7 @@ We needed a way to keep the same controllers roughly grouped together so each de
 
 The result is an HTML page with boxes listing the controller name and action and the total lines of code for that Post It Note.
 
-Then, print out the resulting HTML file, which is written to your project root, and cut out the Post Its!. Make a column for each of your dev's names. Each column can have a "Working" and "Done" sub column to allow other devs to see who is working on which actions in case they get a Post It with overlapping controllers.
+Then, print out the resulting HTML file, which is written to your project root, and cut out the Post Its! Make a column for each of your dev's names. Each column can have a "Working" and "Done" sub column to allow other devs to see who is working on which actions in case they get a Post It with overlapping controllers.
 
 ![Image of Example Post It Note Board](https://cloud.githubusercontent.com/assets/89930/7376906/1672368e-edb1-11e4-917c-f95139327df3.jpg)
 
