@@ -16,9 +16,9 @@
         padding: 5px 10px;
         float: left;
         margin: 20px 20px 0 0;
-        width: 320px;
+        width: 250px;
         border: 2px dashed grey;
-        font-size: 10px;
+        font-size: 7px;
       }
       ul {
         list-style: none;
@@ -34,11 +34,14 @@
       <div class="row">
         <div class="col-1-sm"></div>
         <div class="col-10-sm">
-          <% @grouping.to_a.in_groups_of 4, false do |batch| %>
+          <% @grouping.to_a.in_groups_of 6, false do |batch| %>
             <div class="page">
               <% batch.each do |n, actions| %>
-                <div class="post_it_note" style="<%= compute_post_it_styles actions %>">
-                  <p>Lines of code: <%= total_loc actions %></p>
+                <div class="post_it_note" style="<%= compute_styles actions %>">
+                  <div class="clearfix">
+                    <p class="pull-left">Lines of code: <%= total_loc actions %></p>
+                    <p class="pull-right">PIN <%= n %></p>
+                  </div>
 
                   <ul>
                     <% actions.each do |(action, lines_of_code)| %>

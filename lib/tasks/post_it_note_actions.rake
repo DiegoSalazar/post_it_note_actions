@@ -5,6 +5,8 @@ REJECT_CONTROLLERS = %w[application_controller]
 
 desc "Generate a list of controller actions grouped by their lines of code count"
 task :post_it_note_actions, [:num_groups, :output_file] => :environment do |task, args|
+  start_time = Time.now.to_f
+
   num_groups = (args[:num_groups] || 10).to_i
   output_file = args[:output_file] || Rails.root.join('post_it_note_test.html')
 
@@ -13,6 +15,9 @@ task :post_it_note_actions, [:num_groups, :output_file] => :environment do |task
   html = Renderer.new(grouping).render
 
   File.open(output_file, 'w') { |f| f.write html }
-  puts "\aDone. Wrote HTML file to: #{output_file}"
+  
+  puts "\aDone in #{sprintf "%.2f", Time.now.to_f - start_time}"
+  puts "Wrote HTML file to: #{output_file}"
+  
   system "open #{output_file}"
 end

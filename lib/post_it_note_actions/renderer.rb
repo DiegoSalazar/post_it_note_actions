@@ -13,9 +13,8 @@ class Renderer
     actions.values.sum
   end
 
-  def compute_post_it_styles(actions)
-    loc = total_loc actions
-    color = compute_color(loc).join(',')
+  def compute_styles(actions)
+    color = compute_color(total_loc(actions)).join(',')
 
     {
       height: "#{compute_height}px;",
@@ -29,24 +28,25 @@ class Renderer
   # h = (max_actions + pad) * factor
   # the pad represents the top two header lines in the rendered post it
   # the factor represents the line height of the action list
-  def compute_height(pad = 2, factor = 18)
+  def compute_height(pad = 2, factor = 13)
     (max_actions + pad) * factor
   end
 
   # Make the groups with the least lines of code green and gradually go to red
   # return a string that will be parameters to the css rgb rule
-  def compute_color(loc, blue = 0)
+  def compute_color(loc, resolution = 50)
     min_loc = total_loc grouping_sorted_by_total_loc.first.last
     max_loc = total_loc grouping_sorted_by_total_loc.reverse.first.last
     
-    range = max_loc - min_loc
+    range    = max_loc - min_loc
     progress = loc - min_loc
-    percent = progress.to_f / range.to_f * 255.0 # of the rgb range
+    percent  = progress.to_f / range.to_f * 100.0
     
-    red = percent.ceil
-    green = 255 - red
+    gradient = ColorFun::Gradient.new "00ff00", "FF9100", "ff0000" # green, orange, red
+    gradient.resolution = resolution
+    rgb = gradient.at [percent, resolution].min
 
-    [red, green, blue]
+    [rgb.red, rgb.green, rgb.blue]
   end
 
   def max_actions
